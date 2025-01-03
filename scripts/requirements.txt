@@ -1,4 +1,1 @@
-pyserial
-pyserial-asyncio
-requests
-python-dotenv
+websockets
