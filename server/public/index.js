@@ -7,5 +7,5 @@ socket.onmessage = (event) => {
     const word = event.data;
     const li = document.createElement('li');
     li.textContent = word;
-    words.appendChild(li);
+    words.insertBefore(li, words.firstChild);
 }
