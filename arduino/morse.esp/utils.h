@@ -18,9 +18,3 @@ String convertWiFiStatusToString(int status) {
         return "WL_DISCONNECTED";
     }
 }
-
-String sendPostRequest(String url, HttpClient client, String body) {
-  String contentType = "application/json";
-  client.post(url, contentType, body);
-  return client.responseBody();
-}
