@@ -14,7 +14,7 @@
             "columns": [
                 "id serial primary key",
                 "word_id int",
-                "status text check (status in ('CORRECT', 'WRONG'))"
+                "is_correct bool not null"
             ],
             "constraints": [
                 "foreign key(word_id) references word(id)"

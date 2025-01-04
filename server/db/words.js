@@ -1,7 +1,7 @@
 const pool = require('./pool')
 
 const saveWord = async (word) => {
-    const result = await pool.query('insert into words (value) values ($1) returning *', [word]);
+    const result = await pool.query('insert into word (value) values ($1) returning *', [word]);
     return result.rows[0]
 }
 
