@@ -32,7 +32,7 @@ socket.onmessage = (event) => {
         return;
     }
 
-    const isCorrect = wordToGues === guessedWord;
+    const isCorrect = wordToGues.toUpperCase() === guessedWord.toUpperCase();
     const guessStatus = isCorrect ? 'correct' : 'wrong'; 
     guessStatusDisplay.textContent = `Your guess is ${guessStatus}`;
     guessStatusDisplay.classList.remove('hidden');

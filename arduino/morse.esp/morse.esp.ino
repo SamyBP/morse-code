@@ -1,5 +1,6 @@
 #include <WiFi.h>
 #include <ArduinoWebsockets.h>
+#include "MorseDecoder.h"
 #include "secrets.h"
 #include "utils.h"
 
@@ -16,6 +17,7 @@ int wifiStatus = WL_IDLE_STATUS;
 using namespace websockets;
 
 WebsocketsClient websocket;
+MorseDecoder decoder;
 
 void setup() {
   Serial.begin(115200);
@@ -52,9 +54,10 @@ void loop() {
   websocket.poll();
 
   if (Serial.available()) {
-    String word = Serial.readStringUntil('\n');
-    word.trim();
-    websocket.send(word);
+    String encoded = Serial.readStringUntil('\n');
+    encoded.trim();
+    String decoded = decoder.decode(encoded);
+    websocket.send(decoded);
   }
 
   delay(500);
