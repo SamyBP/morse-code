@@ -1,5 +1,4 @@
 require('dotenv').config();
-// require("./ws.server");
 
 const express = require('express')
 const path = require('path');
