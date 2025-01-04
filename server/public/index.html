@@ -7,13 +7,18 @@
     <link rel="stylesheet" href="/index.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Morse Code Game - Words List</h1>
-        <ul id="words-list">
-            
-        </ul>
-        <!-- <button id="load-words">Load Words</button> -->
+    <div class="description">
+        You are required to correctly guess the morse code encryption of a word, start by generating a word and typing the morse code representation in your 
+        Arduino IDE Serial Monitor
     </div>
+
+    <div class="button-container">
+        <button id="generate-word-btn">Generate random word</button>
+    </div>
+
+    <div id="word-display" class="word-display hidden"></div>
+    <div id="guess-status-display" class="guess-status-display hidden"></div>
+
     <script src="/index.js"></script>
 </body>
 </html>
