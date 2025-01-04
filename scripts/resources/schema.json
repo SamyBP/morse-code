@@ -1,0 +1,24 @@
+{
+    "tables": [
+        {
+            "name": "word",
+            "columns": [
+                "id serial primary key",
+                "value text",
+                "created_at timestamp default now()"
+            ],
+            "constraints": null
+        }, 
+        {
+            "name": "guess",
+            "columns": [
+                "id serial primary key",
+                "word_id int",
+                "status text check (status in ('CORRECT', 'WRONG'))"
+            ],
+            "constraints": [
+                "foreign key(word_id) references word(id)"
+            ]
+        }
+    ]
+}
