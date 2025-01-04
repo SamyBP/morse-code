@@ -35,7 +35,6 @@ def create_tables(connection, tables: list[dict]):
             cursor.execute(query)
     
 
-
 def save_words(connection, words: list[str]):
     with connection.cursor() as cursor:
         query = 'insert into word(value) values(%s)'
