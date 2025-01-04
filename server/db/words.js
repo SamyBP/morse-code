@@ -5,14 +5,14 @@ const saveWord = async (word) => {
     return result.rows[0]
 }
 
-const getAllWords = async () => {
-    const result = await pool.query('select * from words order by created_at desc');
-    return result.rows;
+const getRandomWord = async () => {
+    const result = await pool.query('select * from word order by random() limit 1');
+    return result.rows[0];
 }
 
 const wordsRepository = {
     save: saveWord,
-    findAll: getAllWords
+    findRandomWord: getRandomWord
 }
 
 module.exports = wordsRepository
