@@ -21,16 +21,10 @@ def load_resource(file: str) -> dict:
 
 def compute_create_table_query(table: dict) -> str:
     name = table.get('name')
-    columns = table.get('columns')
-    constraints = table.get('constraints')
-    
-    query = f'create table if not exists {name} ('
-    query += ', '.join(columns)
-    
-    if constraints:
-        query += ', ' + ', '.join(constraints)
-    
-    query += ');'
+    columns = ', '.join(table.get('columns')) 
+    constraints = table.get('constraints') 
+    costraints_sql = ',' + ', '.join(constraints) if constraints else '' 
+    query = f'create table if not exists {name} ({columns}{costraints_sql});'
     return query
 
 
