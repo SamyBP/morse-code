@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morse Code Game</title>
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/scores/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/rules"><i class="fa fa-info-circle"></i> Rules</a>
+        <a href="/"><i class="fa fa-gamepad"></i> Game</a>
+        <a class="active" href="/scores"><i class="fa fa-trophy"></i> Scores</a>
+    </div>
+    
+    <div class="charts">
+        <div class="row">
+            <div class="chart">
+                <canvas id="myBarChart"></canvas>
+            </div>
+            <div class="chart">
+                <canvas id="myPieChart"></canvas>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="chart">
+                <canvas id="myLineChart"></canvas>
+            </div>
+            <div class="chart">
+                <canvas id="letterMisses"></canvas>
+            </div>
+    </div>
+
+    <script src="/scores/index.js"></script>
+</body>
+</html>

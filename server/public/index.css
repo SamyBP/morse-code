@@ -10,6 +10,36 @@ body {
     background-color: #f4f4f9;
 }
 
+.navbar {
+    width: 100%;
+    background-color: #555;
+    overflow: visible;
+}
+
+.navbar a {
+    float: left;
+    text-align: center;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.navbar a:hover {
+    background-color: #000;
+}
+  
+.active {
+    background-color: #04AA6D;
+}
+
+@media screen and (max-width: 500px) {
+    .navbar a {
+      float: none;
+      display: block;
+    }
+}
+
 .description {
     margin-top: 20px;
     width: 70%;
@@ -26,7 +56,7 @@ body {
     padding: 10px 20px;
     font-size: 1rem;
     color: white;
-    background-color: #28a745;
+    background-color: #04AA6D;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -45,20 +75,50 @@ body {
     text-align: center;
 }
 
-.guess-status-display {
-    margin-top: 20px;
-    font-size: 1rem;
-    text-align: center;
-}
-
-.correct {
-    color: #218838;
-}
-
-.wrong {
-    color:red;
-}
 
 .hidden {
     display: none;
+}
+
+
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center; 
+    border-radius: 2px; 
+    padding: 16px; 
+    position: fixed; 
+    z-index: 1; 
+    left: 50%; 
+    bottom: 30px;
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
 }

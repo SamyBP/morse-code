@@ -1,6 +1,7 @@
 const generateWordButton = document.getElementById('generate-word-btn');
 const randomWordDisplay = document.getElementById('word-display');
 const guessStatusDisplay = document.getElementById('guess-status-display');
+const snackbar = document.getElementById('snackbar');
 const socket = new WebSocket('ws://localhost:8080');
 
 generateWordButton.addEventListener('click', async () => {
@@ -22,6 +23,13 @@ generateWordButton.addEventListener('click', async () => {
     }
 });
 
+function showSnackbar(message, backgroundColor) {
+    snackbar.textContent = message;
+    snackbar.className = 'show';
+    snackbar.style.backgroundColor = backgroundColor || 'black';
+    setTimeout(() => snackbar.className = snackbar.className.replace('show', ''), 3000);
+}
+
 socket.onmessage = (event) => {
     const wordToGues = randomWordDisplay.textContent
     const guessedWord = event.data;
@@ -33,18 +41,16 @@ socket.onmessage = (event) => {
     }
 
     const isCorrect = wordToGues.toUpperCase() === guessedWord.toUpperCase();
-    const guessStatus = isCorrect ? 'correct' : 'wrong'; 
-    guessStatusDisplay.textContent = `Your guess is ${guessStatus}`;
-    guessStatusDisplay.classList.remove('hidden');
-    guessStatusDisplay.classList.add(guessStatus);
-    console.log(`Your guess is ${guessStatus}`);
+    const guessStatus = isCorrect ? 'correct' : 'wrong, please try again'; 
+    const backgroundColor = isCorrect ? '#04AA6D' : '#ED4337';
+    showSnackbar(`Your guess is ${guessStatus}`, backgroundColor);
 
     const sendGuessToServer = async (id, flag) => {
         try {
             const response = await fetch('/api/guess', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({wordId: id, isCorrect: flag})
+                body: JSON.stringify({wordId: id, isCorrect: flag, value: guessedWord})
             })
     
             if (!response.ok) {
