@@ -56,7 +56,7 @@ void loop() {
   if (Serial.available()) {
     String encoded = Serial.readStringUntil('\n');
     encoded.trim();
-    String decoded = decoder.decode(encoded);
+    String decoded = decoder.decode(encoded.c_str());
     websocket.send(decoded);
   }
 

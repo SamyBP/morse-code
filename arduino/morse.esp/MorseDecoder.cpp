@@ -14,36 +14,24 @@ const size_t MorseDecoder::morseDictSize = sizeof(MorseDecoder::morseDict) / siz
 
 MorseDecoder::MorseDecoder() {}
 
-String MorseDecoder::decode(const String& morseCode) {
-    String decodedText;
-    int start = 0;
-    int spaceIndex;
+String MorseDecoder::decode(const char* encoded) {
+    String decoded;
 
-    while ((spaceIndex = morseCode.indexOf(' ', start)) != -1) {
-        String token = morseCode.substring(start, spaceIndex);
-        start = spaceIndex + 1;
-
-        char decodedChar = '?';
-        for (size_t i = 0; i < morseDictSize; i++) {
-            if (token == morseDict[i].morse) {
-                decodedChar = morseDict[i].letter;
-                break;
-            }
+    char buffer[strlen(encoded) + 1];
+    strcpy(buffer, encoded);
+    
+    char* token = strtok(buffer, " ");
+    while (token != NULL) {
+      char letter = '?';
+      for (size_t i = 0; i < morseDictSize; i++) {
+        if (strcmp(token, morseDict[i].morse) == 0) {
+          letter = morseDict[i].letter;
+          break;
         }
-        decodedText += decodedChar;
+      }
+      decoded += letter;
+      token = strtok(NULL, " ");
     }
 
-    String lastToken = morseCode.substring(start);
-    if (!lastToken.isEmpty()) {
-        char decodedChar = '?';
-        for (size_t i = 0; i < morseDictSize; i++) {
-            if (lastToken == morseDict[i].morse) {
-                decodedChar = morseDict[i].letter;
-                break;
-            }
-        }
-        decodedText += decodedChar;
-    }
-
-    return decodedText;
+    return decoded;
 }

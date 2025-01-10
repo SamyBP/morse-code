@@ -1,5 +1,3 @@
-#include <ArduinoHttpClient.h>
-
 String convertWiFiStatusToString(int status) {
   switch(status){
       case WL_IDLE_STATUS:

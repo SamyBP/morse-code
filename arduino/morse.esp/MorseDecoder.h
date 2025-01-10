@@ -14,7 +14,7 @@ private:
 
 public:
     MorseDecoder();
-    String decode(const String& morseCode);
+    String decode(const char* encoded);
 };
 
 #endif // MORSEDECODER_H
