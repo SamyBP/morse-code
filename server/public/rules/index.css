@@ -1,0 +1,25 @@
+.rules-container {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    text-align: left;
+}
+
+.rules-list {
+    list-style-type: decimal;
+    font-size: 1.5rem;
+    color: #555;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.rules-list li {
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-weight: 750;
+    color: #555;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}

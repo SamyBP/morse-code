@@ -9,14 +9,6 @@ router.post('/', async (request, response) => {
     return response.status(200).json(guess);
 })
 
-router.get('/', async (request, response) => {
-    console.log(`${request.method} ${request.originalUrl}`);
-    const limit = request.query.limit || 3;
-    const status = request.query.status || 'wrong';
-    const guesses = await guessRepository.findTopGuessesByStatus(limit, status === 'wrong' ? false : true);
-    return response.status(200).json(guesses);
-})
-
 function calculateMostMissedLetters(guesses, limit) {
     const misses = {};
 
