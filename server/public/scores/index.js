@@ -60,7 +60,7 @@ async function initializeCharts() {
             legend: { display: false },
             title: { display: true, text: "Most wrong guessed words" },
             scales: { 
-                yAxes: [{ ticks: { beginAtZero: true, max: 5 } }] 
+                yAxes: [{ ticks: { beginAtZero: true, max: Math.max(...mostWrongGuessedWords.map(word => word.count)) + 1 } }] 
             }
         });
 
@@ -89,7 +89,7 @@ async function initializeCharts() {
             legend: { display: false },
             title: { display: true, text: "Most missed letters" },
             scales: { 
-                yAxes: [{ ticks: { beginAtZero: true, max: 5 } }] 
+                yAxes: [{ ticks: { beginAtZero: true, max: Math.max(...mostMissedLetters.map(data => data.count)) + 1} }] 
             }
         });
 }
