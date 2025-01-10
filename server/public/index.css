@@ -69,6 +69,8 @@ body {
 }
   
 .word-display {
+    display: flex;
+    justify-content: center;
     margin-top: 40px;
     font-size: 2rem;
     font-weight: bold;
@@ -76,6 +78,25 @@ body {
     text-align: center;
 }
 
+.letter-box {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0 5px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.letter-box.correct {
+    border-color: #04AA6D;
+}
+
+.letter-box.wrong {
+    border-color: #ED4337;
+}
 
 .hidden {
     display: none;

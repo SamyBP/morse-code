@@ -13,7 +13,13 @@ generateWordButton.addEventListener('click', async () => {
         }
 
         localStorage.setItem('generatedWordId', data.id.toString());
-        randomWordDisplay.textContent = data.value;
+        randomWordDisplay.innerHTML = '';
+        data.value.split('').forEach(letter => {
+            const letterBox = document.createElement('div');
+            letterBox.className = 'letter-box';
+            letterBox.textContent = letter;
+            randomWordDisplay.appendChild(letterBox);
+        });
         generateWordButton.style.display = 'none';
         randomWordDisplay.classList.remove('hidden');
 
@@ -44,6 +50,24 @@ socket.onmessage = (event) => {
     const guessStatus = isCorrect ? 'correct' : 'wrong, please try again'; 
     const backgroundColor = isCorrect ? '#04AA6D' : '#ED4337';
     showSnackbar(`Your guess is ${guessStatus}`, backgroundColor);
+
+    const letterBoxes = randomWordDisplay.children;
+    guessedWord.split('').forEach((letter, index) => {
+        if (letterBoxes[index]) {
+            letterBoxes[index].classList.remove('correct', 'wrong');
+            if (wordToGues[index].toUpperCase() === letter.toUpperCase()) {
+                letterBoxes[index].classList.add('correct');
+            } else {
+                letterBoxes[index].classList.add('wrong');
+            }
+        }
+    });
+
+    if (isCorrect) {
+        generateWordButton.style.display = 'block';
+        generateWordButton.textContent = 'Try with another word';
+        // randomWordDisplay.classList.add('hidden');
+    }
 
     const sendGuessToServer = async (id, flag) => {
         try {
