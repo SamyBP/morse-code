@@ -40,7 +40,16 @@ void setup() {
   }
 
   websocket.onMessage([&](WebsocketsMessage message){
-    Serial.println(message.data());
+    String data = message.data();
+    
+    if (data.startsWith("encode:")) {
+      Serial.print("Recieved message to encode ");
+      Serial.println(data);
+      String word = data.substring(7);
+      String encoded = decoder.encode(word.c_str());
+      String response = "result:" + encoded;
+      websocket.send(response);
+    }
   });
 }
 

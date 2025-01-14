@@ -35,3 +35,17 @@ String MorseDecoder::decode(const char* encoded) {
 
     return decoded;
 }
+
+String MorseDecoder::encode(const char* word) {
+  String encoded = "";
+
+  for (size_t i = 0; i < strlen(word); i++) {
+    char c = toupper(word[i]);
+    if (c >= 'A' && c <= 'Z') {
+      encoded += String(morseDict[c - 'A'].morse) + " ";
+    }
+  }
+  encoded.trim();
+  return encoded;
+}
+
