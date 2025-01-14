@@ -21,4 +21,8 @@ wss.on('connection', (ws) => {
             }
         })
     })
+
+    ws.on('close', () => {
+        console.log('A connection has closed');
+    })
 })

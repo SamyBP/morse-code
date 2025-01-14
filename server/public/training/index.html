@@ -5,30 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Morse Code Game</title>
     <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/training/index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
     <div class="navbar">
         <a href="/rules"><i class="fa fa-info-circle"></i> Rules</a>
-        <a class="active" href="/"><i class="fa fa-gamepad"></i> Game</a>
+        <a href="/"><i class="fa fa-gamepad"></i> Game</a>
         <a href="/scores"><i class="fa fa-trophy"></i> Scores</a>
-        <a href="/training"><i class="fa fa-graduation-cap"></i>Training</a>
+        <a class="active" href="/training"><i class="fa fa-graduation-cap"></i>Training</a>
     </div>
 
-    <div class="description">
-        You are required to correctly guess the morse code encryption of a word, start by generating a word and typing the morse code representation in your 
-        Arduino IDE Serial Monitor
+    <div class="card">
+        <h2>Get your word in morse code</h2>
+        <input type="text" id="word" name="word" placeholder="type in a word..">    
+        <button id="submit">Submit</button>
     </div>
-
-
 
     <div id="word-display" class="word-display hidden"></div>
-    <div id="snackbar"></div>
 
-     <div class="button-container">
-        <button id="generate-word-btn">Generate random word</button>
-    </div>
+    <script src="/training/index.js"></script>
 
-    <script src="/index.js"></script>
 </body>
 </html>
